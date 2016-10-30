@@ -9,11 +9,39 @@
 - 黄鹤飞
 - 梅杰
 
-## 程序架构
+## 工作分解结构图
 
-- 单元劲度矩阵
-- 整体劲度矩阵
-- 节点位移求解
+<div align="center">
+    <img src="https://github.com/MajorChina/FEM/blob/master/img/WBS.jpg" width="500">
+</div>
+
+## 任务安排及进度
+
+<div align="center">
+    <img src="https://github.com/MajorChina/FEM/blob/master/img/甘特图.png" width="500">
+</div>
+
+## 编程规范
+
+### 文件命名
+
+开头小写、驼峰命名法
+    unitArea.m
+    unitStiffnessMatrix.m
+
+### 函数命名
+
+同文件名
+
+### 变量命名
+
+变量 下划线链接，小写
+    node_displacement
+
+常量 全部大写
+    E
+
+
 
 License
 -------
