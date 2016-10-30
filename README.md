@@ -26,6 +26,7 @@
 ### 文件命名
 
 开头小写、驼峰命名法
+
     unitArea.m
     unitStiffnessMatrix.m
 
@@ -36,9 +37,11 @@
 ### 变量命名
 
 变量 下划线链接，小写
+
     node_displacement
 
 常量 全部大写
+
     E
 
 
