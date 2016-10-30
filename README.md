@@ -12,13 +12,13 @@
 ## 工作分解结构图
 
 <div align="center">
-    <img src="https://github.com/MajorChina/FEM/blob/master/img/WBS.jpg" width="500">
+    <img src="https://github.com/MajorChina/FEM/blob/master/img/WBS.jpg">
 </div>
 
 ## 任务安排及进度
 
 <div align="center">
-    <img src="https://github.com/MajorChina/FEM/blob/master/img/甘特图.png" width="500">
+    <img src="https://github.com/MajorChina/FEM/blob/master/img/甘特图.png">
 </div>
 
 ## 编程规范
