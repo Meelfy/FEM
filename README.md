@@ -31,15 +31,33 @@
 
 ### 用到的变量及其规定
 
-- 单元的坐标使用两个列向量，依次为 i j m
+- 结点个数
 
-    double element_X / 三行，一列 3 * 1  
-    double element_Y / 三行，一列 3 * 1
+    n
+
+- 单元个数
+
+    m
+
+- 全部结点坐标
+
+    all_element_X  /  n * 1
+    all_element_Y  /  n * 1
+
+- 单元拓扑表
+
+    unit_topology_table  / m * 3  
+    所在行数即为单元的编号
+
+- 单个单元的坐标使用两个列向量，依次为 i j m
+
+    double element_X  / 三行，一列 3 * 1  
+    double element_Y  / 三行，一列 3 * 1
 
 - B矩阵
 
-    double matrixB / 3 * 6的矩阵
-
+    double matrixB  / 3 * 6的矩阵
+ 
 ### 用到的函数文件及其规定
     
 

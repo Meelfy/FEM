@@ -11,5 +11,8 @@ function matrixB = calMatrixB(element_X, element_Y)
 
 % 数据类型的规定
 % 请在README.md中说明
-
+% 计算单元面积的函数定义在 
+%     /src_matlab/util/calAera.m
+%     使用 element_A = calAera(element_X, element_Y);
+%     直接得到结果
 % 请标明参考文献的出处
