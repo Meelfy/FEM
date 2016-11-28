@@ -21,6 +21,12 @@
     <img src="https://github.com/MajorChina/FEM/blob/master/img/甘特图.png">
 </div>
 
+## 数据流程图
+
+<div align="center">
+    <img src="https://github.com/MajorChina/FEM/blob/master/img/数据流程图-0.1.jpg">
+</div>
+
 ## 编程规范
 
 ### 文件命名
