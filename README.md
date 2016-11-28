@@ -33,7 +33,7 @@
 
 - 单元的坐标使用两个列向量，依次为 i j m
 
-    double element_X / 三行，一列 3 * 1
+    double element_X / 三行，一列 3 * 1  
     double element_Y / 三行，一列 3 * 1
 
 - B矩阵
