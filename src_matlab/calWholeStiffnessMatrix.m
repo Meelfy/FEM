@@ -6,3 +6,6 @@ function K = calWholeStiffnessMatrix()
 % 输出：
 %     整体刚度矩阵 K
 %     K 为 n * n 的矩阵 的某种储存形式
+%     如果K的储存不是矩阵，请使用cell储存
+%     并给出每个cell的含义
+%     之后参数的传递以 K 为准
