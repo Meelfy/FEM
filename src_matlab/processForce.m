@@ -7,6 +7,7 @@ function P = processForce(P, K, bound)
 Ak = K{1}; % line
 Ind = K{2}; % 2 * n
 
+
 for i = 1 : size(bound,1);
 	elementNum = bound(i, 1);
 	XorY = bound(i, 2);
@@ -14,5 +15,5 @@ for i = 1 : size(bound,1);
 	displacement = bound(i, 3);
 
 	% K(i,j) 相当于 Ak(Ind(i) - (i - j))
-	P(elementNum, XorY) = Ak(Ind(j)) * (1 / eps) * displacement;
+	P(j) = Ak(Ind(j)) * (1 / eps) * displacement;
 end 
