@@ -2,6 +2,7 @@
 % 变量的定义见 README.md
 
 % Step 1： 数据读取
+addpath(genpath(pwd));
 
 input_path = 'input/sam1.0/';
 
