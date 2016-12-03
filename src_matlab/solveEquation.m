@@ -51,4 +51,13 @@ for i = 2:size(Ind)
 end
 
 
-% u(i, j)因为
+whole_displaycement(size(Ind)) = Y(end);
+for i = 1:size(Ind) - 1
+    j = size(Ind) - i;1
+
+    temp = 0;
+    for k = j + 1 : size(Ind)
+        temp = temp + L(Ind(k) - (k - j)) / L(Ind(j)) * whole_displaycement(k);
+    end 
+    whole_displaycement(j) = Y(j) - temp;
+end
