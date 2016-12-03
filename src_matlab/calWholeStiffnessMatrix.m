@@ -23,7 +23,6 @@ function [K,K_info] = calWholeStiffnessMatrix(coord, unit_topology_table, materi
             position(ii*2-1) = unit_topology_table(i,ii)*2-1;
             position(ii*2) = unit_topology_table(i,ii)*2;
         end
-        position
         for j = 1:6
             for jj = 1:6
                 if position(j) >= position(jj)
