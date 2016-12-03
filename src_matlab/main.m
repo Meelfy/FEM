@@ -24,9 +24,14 @@ materials = dlmread([input_path, 'materials.dat']);
 % 平面应力问题cal_type=1,平面应变问题cal_type=2
 cal_type = 1;
 
+flag = 'ondDimension';
+% flag = 'sparse'
+
 % Step 2： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
 % Branch 1: 使用一维半带宽方法求解
-% Branch 2: 
+
+% Branch 2: 使用稀疏矩阵的方式储存，求解
+
 % Step 3： 根据约束对整体刚度矩阵进行处理
 
 % Step 4： 求解结点平衡方程
