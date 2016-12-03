@@ -6,7 +6,7 @@ addpath(genpath(pwd));
 
 input_path = 'input/sam1.0/';
 
-% 边界条件，输入为n行，n为约束个数，每一行为“a b”，a为结点编号，b为1或2，分别表示x、y方向的约束（位移为0）
+% 边界条件，输入为n行，n为约束个数，每一行为“a b c”，a为结点编号，b为1或2，分别表示x、y方向，c为位移量（未考虑弹性约束）
 bound = dlmread([input_path, 'boundaryCondition.dat']);
 
 % 结点坐标，输入为n行，n为结点个数，每一行为“x y”，即该行数对应结点数的坐标
