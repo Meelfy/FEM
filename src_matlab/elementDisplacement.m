@@ -13,7 +13,7 @@ function element_displacement = elmentDisplacement(whole_d, element_x, elment_y)
 % 此时单元节点位移已经可以整理后输出为成果，可以在此直接打印
 % 注意打印格式
 n = size(unit_topology_table,1);
-element_displaycement = zeros(n,6)
+element_displaycement = zeros(n,6);
 for i = 1:n
     position = zeros(1, 6);
     for ii = 1:3
