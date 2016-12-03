@@ -1,4 +1,4 @@
-function K = calWholeStiffnessMatrixSparse(coord, unit_topology_table, materials,cal_type)
+function K = calWholeStiffnessMatrixSparse(coord, unit_topology_table, materials, cal_type)
 % 这个函数计算整体的劲度矩阵K
 % 因为计算方法未定，输入部分的说明自行完成
 % 输入：单元劲度阵
