@@ -2,7 +2,7 @@
 % 变量的定义见 README.md
 
 % Step 1： 数据读取
-input_path = 'input/sam1.0';
+input_path = 'input/sam1.0/';
 bound = dlmread([input_path, 'boundaryCondition.dat']);
 coord = dlmread([input_path, 'elementCoordinates.dat']);
 unit_topology_table = dlmread([input_path, 'elementTopology.dat']);
