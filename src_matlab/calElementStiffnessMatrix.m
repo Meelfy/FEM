@@ -5,7 +5,7 @@ function element_k = calElementStiffnessMatrix(matrixB, matrixD, t, A)
 %       B矩阵     matrixB
 %       D矩阵     matrixD
 %       厚度      t
-%       单元面积  A
+%       单元面积   A
 % 输出
 %       单元刚度矩阵 element_k
 %       为 6 * 6 矩阵
