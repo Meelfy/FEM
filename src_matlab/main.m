@@ -25,18 +25,18 @@ materials = dlmread([input_path, 'materials.dat']);
 cal_type = 1;
 
 flag = 'ondDimension';
-% flag = 'sparse'
+% flag = 'sparse';
 
 % Step 2： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
 % Branch 1: 使用一维半带宽方法求解
-
-% Branch 2: 使用稀疏矩阵的方式储存，求解
+if flag == 'ondDimension'
+    [K, K_info] = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type);
+end
 
 % Step 3： 根据约束对整体刚度矩阵进行处理
-K = processConstraint(K, bound);
-P = processForce(P, K, bound);
 
 % Step 4： 求解结点平衡方程
+% Branch 2: 使用稀疏矩阵的方式储存，求解
 
 % Step 5： 求解单元节点位移
 
