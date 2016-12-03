@@ -33,6 +33,8 @@ flag = 'ondDimension';
 % Branch 2: 使用稀疏矩阵的方式储存，求解
 
 % Step 3： 根据约束对整体刚度矩阵进行处理
+K = processConstraint(K, bound);
+P = processForce(P, K, bound);
 
 % Step 4： 求解结点平衡方程
 
