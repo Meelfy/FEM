@@ -16,12 +16,17 @@ function delta = solveEquation2(K, P, Iter_Time, Iter_Acc)
 
 % 在readme.md中说明此解决方案
 % 迭代法参考文献
+% Iter_Time = 1000;
+% Iter_Acc = 1e-5;
+% K = diag([2 1]);
+% P = [1; 1];
 N = length(P);
 T = diag(K);
-AT = 1./ T;
+AT = sparse(1./ T);
 M = eye(N) - diag(AT) * K;
+sum(eig(M) > 1)
 G = P .* AT;
-delta = ones(N, 1);
+delta = sparse(ones(N, 1));
 for i = 1:Iter_Time
     deltatemp = delta;
     delta = M * deltatemp + G;

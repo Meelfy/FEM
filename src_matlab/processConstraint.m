@@ -6,13 +6,13 @@ function K = processConstraint(K, bound)
 %      请自行补充
 % 输出：
 %      处理后的 K
-Ak = K{1}; % line
+Ak = K{1}; % one line
 Ind = K{2}; %  1 * 2n
 
 for i = 1 : size(bound,1);
-	elementNum = bound(i, 1);
-	XorY = bound(i, 2);
-	j = elementNum * 2 - 2 + XorY;
+	element_num = bound(i, 1);
+	x_or_y = bound(i, 2);
+	j = element_num * 2 - 2 + x_or_y;
 	% K(i,j) 相当于 Ak(Ind(i) - (i - j))
 	Ak(Ind(j)) = Ak(Ind(j)) * (1 / eps);
 end

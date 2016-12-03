@@ -5,7 +5,9 @@ clc;clear all;close all;
 addpath(genpath(pwd));
 
 input_path = 'input/sam1.0/';
-% 边界条件，输入为n行，n为约束个数，每一行为“a b”，a为结点编号，b为1或2，分别表示x、y方向的约束（位移为0）
+
+% 边界条件，输入为n行，n为约束个数，每一行为“a b c”，a为结点编号，b为1或2，
+% 分别表示x、y方向，c为位移量（未考虑弹性约束）
 bound = dlmread([input_path, 'boundaryCondition.dat']);
 
 % 结点坐标，输入为n行，n为结点个数，每一行为“x y”，即该行数对应结点数的坐标
@@ -24,23 +26,36 @@ materials = dlmread([input_path, 'materials.dat']);
 % 平面应力问题cal_type=1,平面应变问题cal_type=2
 cal_type = 1;
 
-flag = 'ondDimension';
-% flag = 'sparse';
+flag = 1;
+% flag = 2;
+% Iter_Time = 1000;
+% Iter_Acc = 1e-5;
 
 % Step 2： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
 % Branch 1: 使用一维半带宽方法求解
-if flag == 'ondDimension'
-    K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type);
+if flag == 1
+    K = calWholeStiffnessMatrix(coord, unit_topology_table,...
+                                materials,cal_type);
 % Step 3： 根据约束对整体刚度矩阵进行处理
     K = processConstraint(K, bound);
     P = processForce(P, K, bound);
+% Step 4： 求解结点平衡方程
     whole_displaycement = solveEquation(K, P);
 end
 
 
-% Step 4： 求解结点平衡方程
 % Branch 2: 使用稀疏矩阵的方式储存，求解
+if flag == 2
+    K = calWholeStiffnessMatrixSparse(coord,...
+                                      unit_topology_table,...
+                                      materials,...
+                                      cal_type);
+% Step 3： 根据约束对整体刚度矩阵进行处理
+    K = processConstraintSparse(K, bound);
+    P = processForceSparse(P, K, bound);
+% Step 4： 求解结点平衡方程
+    delta = solveEquation2(K, P, Iter_Time, Iter_Acc);
+end
 
 % Step 5： 求解单元节点位移
-
 % Step 6： 求解单元应变与单元应力
