@@ -17,3 +17,38 @@ function whole_displaycement = solveEquation(K, P, solving_way)
 % 在readme.md中说明此解决方案
 % 迭代法参考文献
 
+Ak = K{1}; % line
+Ind = K{2}; % 2 * n
+
+% 使用直接法计算
+% L 是下三角矩阵
+% 逐层计算L的值
+% L 的结构与Ak相同
+L = 0 * Ak;
+
+L(1) = Ak(1);
+% K(i,j) 相当于 Ak(Ind(i) - (i - j))
+% L(i,j) 相当于 L(Ind(i) - (i - j))
+for i = 2:size(Ind)
+    for j = Ind(i) - Ind(i-1) : i
+        temp = 0;
+        for k = 1:j-1
+            temp = temp + L(Ind(i) - (i - k)) * L(Ind(j) - (j - k)) / ...
+                    L(Ind(k) - (k - k));
+        end
+        L(Ind(i) - (i - j)) = Ak(Ind(i) - (i - j)) - temp;
+    end
+end
+
+
+Y(1) = P(1) / L(Ind(1) - (1 - 1));
+for i = 2:size(Ind)
+    temp = 0;
+    for j = 1 : i - 1
+        temp = temp + Y(j) * L(Ind(i) - (i - j)) / L(Ind(i));
+    end
+    Y(i) = P(i) - temp;
+end
+
+
+% u(i, j)因为

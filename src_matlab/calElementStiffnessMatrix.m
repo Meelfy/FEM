@@ -11,4 +11,4 @@ function element_k = calElementStiffnessMatrix(matrixB, matrixD, t, A)
 %       为 6 * 6 矩阵
 
 
-element_k = B' * D * B * t * A;
+element_k = matrixB' * matrixD * matrixB * t * A;
