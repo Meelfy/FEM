@@ -9,9 +9,22 @@ function [K,K_info] = calWholeStiffnessMatrix(Coord, unit_topology_table, Materi
 %     如果K的储存不是矩阵，请使用cell储存
 %     并给出每个cell的含义
 %     之后参数的传递以 K 为准
-    open_K_speace(unit_topology_table);
+    [K, K_info] = open_K_speace(unit_topology_table);
     n = size(unit_topology_table,1);
     for i = 1:n
         matrixB = calMatrixB(element_X, element_Y);
         matrixD = calMatrixD(Materials(i,1), Materials(i,2), cal_type);
         element_k = calElementStiffnessMatrix(matrixB, matrixD, t, Area(element_X, element_Y));
+        position = zeros(1,6);
+        for ii = 1:3
+            position(ii*2-1) = unit_topology_table(i)*2-1;
+            position(ii*2) = unit_topology_table(i)*2;
+        end
+        for j = 1:6
+            for jj = 1:6
+                oned_x = K_info(position(j)) - (position(j)-position(jj));
+                K(oned_x) = K(oned_x) + element_k(j,jj);
+            end
+        end
+    end
+    
