@@ -11,9 +11,10 @@ function [K,K_info] = calWholeStiffnessMatrix(Coord, unit_topology_table, Materi
 %     之后参数的传递以 K 为准
     [K, K_info] = open_K_speace(unit_topology_table);
     n = size(unit_topology_table,1);
+    t = 1;
     for i = 1:n
-        element_X = Coord(unit_topology_table(i, :)',1);
-        element_Y = Coord(unit_topology_table(i, :)',2);
+        element_X = Coord(unit_topology_table(i)',1);
+        element_Y = Coord(unit_topology_table(i)',2);
         matrixB = calMatrixB(element_X, element_Y);
         matrixD = calMatrixD(Materials(i,1), Materials(i,2), cal_type);
         element_k = calElementStiffnessMatrix(matrixB, matrixD, t, Area(element_X, element_Y));
