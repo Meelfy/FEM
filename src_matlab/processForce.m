@@ -1,4 +1,4 @@
-function P = processForce(P, K, bound)
+function P = processForce(P, K, K_info, bound)
 % 这个函数对P进行处理，使其满足约束
 % 输入：
 %      外力荷载P

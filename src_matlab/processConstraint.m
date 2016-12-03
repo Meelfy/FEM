@@ -1,4 +1,4 @@
-function K = processConstrain(K, bound)
+function K = processConstraint(K, K_info, bound)
 % 这个函数对K进行处理，使其满足约束
 % 输入：
 %      整体劲度矩阵 K

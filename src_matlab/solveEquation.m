@@ -1,4 +1,4 @@
-function whole_displaycement = solveEquation(K, P, solving_way)
+function whole_displaycement = solveEquation(K, P)
 % 直接法和间接法解整体结点平衡方程
 % 输入： 
 	% 处理后的整体刚度矩阵K，和
@@ -9,7 +9,6 @@ function whole_displaycement = solveEquation(K, P, solving_way)
 
 % 根据解决方式不同，自行写两个解方程函数
 % 直接法
-% 迭代法
 
 % 输出：
 	% 整体结点位移whole_displaycement

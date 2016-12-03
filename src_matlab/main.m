@@ -1,6 +1,6 @@
 % 本程序对有限元算法进行了计算
 % 变量的定义见 README.md
-
+clc;clear all;close all;
 % Step 1： 数据读取
 addpath(genpath(pwd));
 
@@ -30,10 +30,13 @@ flag = 'ondDimension';
 % Step 2： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
 % Branch 1: 使用一维半带宽方法求解
 if flag == 'ondDimension'
-    [K, K_info] = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type);
+    K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type);
+% Step 3： 根据约束对整体刚度矩阵进行处理
+    K = processConstraint(K, bound);
+    P = processForce(P, K, bound);
+    whole_displaycement = solveEquation(K, P);
 end
 
-% Step 3： 根据约束对整体刚度矩阵进行处理
 
 % Step 4： 求解结点平衡方程
 % Branch 2: 使用稀疏矩阵的方式储存，求解

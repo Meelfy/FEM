@@ -1,4 +1,4 @@
-function [K,K_info] = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type)
+function K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type)
 % 这个函数计算整体的劲度矩阵K
 % 因为计算方法未定，输入部分的说明自行完成
 % 输入：单元劲度阵
@@ -32,5 +32,7 @@ function [K,K_info] = calWholeStiffnessMatrix(coord, unit_topology_table, materi
             end
         end
     end
-
-    
+    temp = K;
+    clear K;
+    K{1} = temp;
+    K{2} = K_info;    
