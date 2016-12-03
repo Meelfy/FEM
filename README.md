@@ -54,6 +54,10 @@
     double element_X  / 三行，一列 3 * 1  
     double element_Y  / 三行，一列 3 * 1
 
+单元刚度阵k
+
+    element_k  /  6 * 6
+
 B矩阵
 
     double matrixB  / 3 * 6的矩阵

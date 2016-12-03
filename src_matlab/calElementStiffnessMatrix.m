@@ -12,4 +12,3 @@ function element_k = calElementStiffnessMatrix(matrixB, matrixD, t, A)
 
 
 element_k = B' * D * B * t * A;
-
