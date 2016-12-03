@@ -1,7 +1,14 @@
+
 % 本程序对有限元算法进行了计算
 % 变量的定义见 README.md
 
 % Step 1： 数据读取
+
+Bound = dlmread('input/boundaryCondition.dat')
+Coord = dlmread('input/elementCoordinates.dat')
+unit_topology_table = dlmread('input/elementTopology.dat')
+P = dlmread('input/forceCondition.dat')
+Materials = dlmread('input/materials.dat')
 
 % Step 2： 所有单元 B，D矩阵的计算
 
