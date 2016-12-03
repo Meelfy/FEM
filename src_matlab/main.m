@@ -16,18 +16,21 @@ unit_topology_table = dlmread([input_path, 'elementTopology.dat']);
 
 % 外力条件，输入为n行，n为结点个数，每一行为“x y”，行数对应结点号，x为x方向上力，y为y方向上的力
 P = dlmread([input_path, 'forceCondition.dat']);
+P = P';P = P(:);
 
 % 材料，输入为n行，n为单元个数，每一行为“e u”， 行数对应单元号，e为E，u为'muj'
 materials = dlmread([input_path, 'materials.dat']);
 
-% Step 2： 所有单元 B，D矩阵的计算
+% 平面应力问题cal_type=1,平面应变问题cal_type=2
+cal_type = 1;
 
-% Step 3： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
+% Step 2： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
+% Branch 1: 使用一维半带宽方法求解
+% Branch 2: 
+% Step 3： 根据约束对整体刚度矩阵进行处理
 
-% Step 4： 根据约束对整体刚度矩阵进行处理
+% Step 4： 求解结点平衡方程
 
-% Step 5： 求解结点平衡方程
+% Step 5： 求解单元节点位移
 
-% Step 6： 求解单元节点位移
-
-% Step 7： 求解单元应变与单元应力
+% Step 6： 求解单元应变与单元应力
