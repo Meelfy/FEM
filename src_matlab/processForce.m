@@ -13,7 +13,6 @@ for i = 1 : size(bound,1);
 	XorY = bound(i, 2);
 	j = elementNum * 2 - 2 + XorY;
 	displacement = bound(i, 3);
-
 	% K(i,j) 相当于 Ak(Ind(i) - (i - j))
 	P(j) = Ak(Ind(j)) * (1 / eps) * displacement;
 end 
