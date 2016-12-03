@@ -66,7 +66,12 @@
 B矩阵
 
     double matrixB  / 3 * 6的矩阵
- 
+
+整体的位移
+
+    whole_displaycement  /  2n * 1
+
+
 ### 用到的函数文件及其规定
     
 

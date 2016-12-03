@@ -40,7 +40,6 @@ for i = 2:size(Ind)
     end
 end
 
-
 Y(1) = P(1) / L(Ind(1) - (1 - 1));
 for i = 2:size(Ind)
     temp = 0;
@@ -49,7 +48,6 @@ for i = 2:size(Ind)
     end
     Y(i) = P(i) - temp;
 end
-
 
 whole_displaycement(size(Ind)) = Y(end);
 for i = 1:size(Ind) - 1
