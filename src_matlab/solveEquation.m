@@ -11,10 +11,9 @@ function whole_displaycement = solveEquation(K, P, solving_way)
 % 直接法
 % 迭代法
 
-
 % 输出：
 	% 整体结点位移whole_displaycement
 
 % 在readme.md中说明此解决方案
 % 迭代法参考文献
-% 等
+
