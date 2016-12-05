@@ -1,9 +1,9 @@
-function whole_displaycement = solveEquation(K, P)
+function whole_displcement = solveEquation(K, P)
 % 直接法和间接法解整体结点平衡方程
 % 输入： 
-	% 处理后的整体刚度矩阵K，和
-	% 外力P
-	% 解决方式solving_way, 有两个值，分别为直接法：direction 和 迭代法：iteration
+    % 处理后的整体刚度矩阵K，和
+    % 外力P
+    % 解决方式solving_way, 有两个值，分别为直接法：direction 和 迭代法：iteration
 
 % 可能用到的中间变量 
 
@@ -11,7 +11,7 @@ function whole_displaycement = solveEquation(K, P)
 % 直接法
 
 % 输出：
-	% 整体结点位移whole_displaycement
+    % 整体结点位移whole_displcement
 
 % 在readme.md中说明此解决方案
 % 迭代法参考文献
@@ -28,7 +28,7 @@ L = 0 * Ak;
 L(1) = Ak(1);
 % K(i,j) 相当于 Ak(Ind(i) - (i - j))
 % L(i,j) 相当于 L(Ind(i) - (i - j))
-for i = 2:size(Ind)
+for i = 2:length(Ind)
     for j = Ind(i) - Ind(i-1) : i
         temp = 0;
         for k = 1:j-1
@@ -40,7 +40,7 @@ for i = 2:size(Ind)
 end
 
 Y(1) = P(1) / L(Ind(1) - (1 - 1));
-for i = 2:size(Ind)
+for i = 2:length(Ind)
     temp = 0;
     for j = 1 : i - 1
         temp = temp + Y(j) * L(Ind(i) - (i - j)) / L(Ind(i));
@@ -48,13 +48,13 @@ for i = 2:size(Ind)
     Y(i) = P(i) - temp;
 end
 
-whole_displaycement(size(Ind)) = Y(end);
-for i = 1:size(Ind) - 1
-    j = size(Ind) - i;1
+whole_displcement(length(Ind)) = Y(end);
+for i = 1:length(Ind) - 1
+    j = length(Ind) - i;
 
     temp = 0;
-    for k = j + 1 : size(Ind)
-        temp = temp + L(Ind(k) - (k - j)) / L(Ind(j)) * whole_displaycement(k);
+    for k = j + 1 : length(Ind)
+        temp = temp + L(Ind(k) - (k - j)) / L(Ind(j)) * whole_displcement(k);
     end 
-    whole_displaycement(j) = Y(j) - temp;
+    whole_displcement(j) = Y(j) - temp;
 end

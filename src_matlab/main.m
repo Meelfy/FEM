@@ -40,7 +40,7 @@ if flag == 1
     K = processConstraint(K, bound);
     P = processForce(P, K, bound);
 % Step 4： 求解结点平衡方程
-    whole_displaycement = solveEquation(K, P);
+    whole_displcement = solveEquation(K, P);
 end
 
 
