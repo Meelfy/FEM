@@ -8,10 +8,10 @@ function element_strain = elementStrain(matrixB, element_displaycement, unit_top
 
 % 输出为
 % 	单元应变 element_strain
-n = size(unit_topology_table,1);
+n = size(unit_topology_table, 1);
 element_strain = zeros(n,6);
 for i = 1:n
-    element_strain(i,:)' = matrixB * (element_displaycement(i,:)');
+    element_strain(i, :)' = matrixB * (element_displaycement(i, :)');
 end
 
     

@@ -27,7 +27,7 @@ for i = 1:m
     % 计算单元劲度矩阵
     % Aera right
     element_k = calElementStiffnessMatrix(matrixB, matrixD,...
-                                         t, calAera(element_X, element_Y))
+                                         t, calAera(element_X, element_Y));
     % 稀疏化
     element_k = sparse(element_k);
 
