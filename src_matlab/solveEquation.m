@@ -29,11 +29,14 @@ L(1) = Ak(1);
 % K(i,j) 相当于 Ak(Ind(i) - (i - j))
 % L(i,j) 相当于 L(Ind(i) - (i - j))
 for i = 2:length(Ind)
-    for j = Ind(i) - Ind(i-1) : i
+    for j = i + 1 -(Ind(i) - Ind(i-1))  : i%有问题！！！！！！！！！！！
         temp = 0;
         for k = 1:j-1
-            temp = temp + L(Ind(i) - (i - k)) * L(Ind(j) - (j - k)) / ...
-                    L(Ind(k) - (k - k));
+            if (i - k) < (Ind(i) - Ind(i-1)) && (j - k) < (Ind(j) - Ind(j-1))
+                temp = temp + L(Ind(i) - (i - k)) * L(Ind(j) - (j - k)) / ...
+                        L(Ind(k) - (k - k));
+            else
+            end
         end
         L(Ind(i) - (i - j)) = Ak(Ind(i) - (i - j)) - temp;
     end
@@ -42,10 +45,13 @@ end
 Y(1) = P(1) / L(Ind(1) - (1 - 1));
 for i = 2:length(Ind)
     temp = 0;
-    for j = 1 : i - 1
+    for j = 1 : i -1
+        if (i - j) < (Ind(i) - Ind(i-1))
         temp = temp + Y(j) * L(Ind(i) - (i - j)) / L(Ind(i));
+        else
+        end
     end
-    Y(i) = P(i) - temp;
+    Y(i) = P(i) / L(Ind(i)) - temp;
 end
 
 whole_displcement(length(Ind)) = Y(end);
@@ -54,7 +60,11 @@ for i = 1:length(Ind) - 1
 
     temp = 0;
     for k = j + 1 : length(Ind)
+        if (k - j) < (Ind(k) - Ind(k-1))
         temp = temp + L(Ind(k) - (k - j)) / L(Ind(j)) * whole_displcement(k);
+        else
+        end
     end 
     whole_displcement(j) = Y(j) - temp;
 end
+
