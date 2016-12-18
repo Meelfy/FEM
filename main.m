@@ -58,5 +58,22 @@ if flag == 2
 end
 
 % Step 5： 求解单元节点位移
-
+element_displacement = elementDisplacement(whole_displcement, unit_topology_table);
 % Step 6： 求解单元应变与单元应力
+m = size(unit_topology_table, 1);
+element_strain = zeros(3, m);
+element_stress = zeros(3, m);
+for i = 1:m
+    % 获取第 i 个单元的坐标
+    element_X = coord(unit_topology_table(i, :)', 1);
+    element_Y = coord(unit_topology_table(i, :)', 2);
+    element_strain(:, i) = elementStrain(calMatrixB(element_X, element_Y),...
+                                   element_displacement,...
+                                   i);
+    element_stress(:, i) = elementStress(calMatrixD(materials(i,1), ...
+                                   materials(i,2), cal_type),...
+                                   element_strain,...
+                                   i);
+end
+dlmwrite('output/element_displacement.dat', element_displacement, 'delimiter', '\t');
+dlmwrite('output/element_stress.dat', element_stress, 'delimiter', '\t');

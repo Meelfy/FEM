@@ -9,7 +9,7 @@ function K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_t
 %     如果K的储存不是矩阵，请使用cell储存
 %     并给出每个cell的含义
 %     之后参数的传递以 K 为准
-    [K, K_info] = open_K_speace(unit_topology_table);
+    [K, K_info] = open_K_space(unit_topology_table);
     m = size(unit_topology_table,1);
     t = 1;
     for i = 1:m

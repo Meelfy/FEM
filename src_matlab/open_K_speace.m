@@ -1,4 +1,4 @@
-function [K,K_info] = open_K_speace(unit_topology_table)
+function [K,K_info] = open_K_space(unit_topology_table)
     n = max(max(unit_topology_table));
     K_info = zeros(1,2*n);
     K_info(1) = 1;
