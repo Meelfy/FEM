@@ -6,10 +6,10 @@ function P = processForceSparse(P, K, bound)
 %      处理后的P
 P = sparse(P);
 
-for i = 1 : size(bound,1);
+for i = 1 : size(bound, 1)
     elementNum = bound(i, 1);
     XorY = bound(i, 2);
     j = elementNum * 2 - 2 + XorY;
     displacement = bound(i, 3);
-    P(j) = K(j, j) * (1 / eps) * displacement;
+    P(j) = K(j, j) * displacement;
 end

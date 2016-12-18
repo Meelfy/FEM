@@ -26,13 +26,12 @@ materials = dlmread([input_path, 'materials.dat']);
 % 平面应力问题cal_type=1,平面应变问题cal_type=2
 cal_type = 1;
 
-flag = 1;
-% flag = 2;
-% Iter_Time = 1000;
-% Iter_Acc = 1e-5;
+% flag = 1;
+flag = 2;
+tol = 1e-5;
 
 % Step 2： 整体刚度矩阵集成,输入单元劲度矩阵，相应单元的单元定位向量,未计算完的K
-% Branch 1: 使用一维半带宽方法求解
+% Branch 1: 使用一维半带宽方法求解 
 if flag == 1
     K = calWholeStiffnessMatrix(coord, unit_topology_table,...
                                 materials,cal_type);
@@ -50,11 +49,12 @@ if flag == 2
                                       unit_topology_table,...
                                       materials,...
                                       cal_type);
-% Step 3： 根据约束对整体刚度矩阵进行处理
+    % Step 3： 根据约束对整体刚度矩阵进行处理
     K = processConstraintSparse(K, bound);
+    % P 的处理一定要在 K之后，因为K已经被置为大数
     P = processForceSparse(P, K, bound);
-% Step 4： 求解结点平衡方程
-    delta = solveEquation2(K, P, Iter_Time, Iter_Acc);
+    % Step 4： 求解结点平衡方程
+    whole_displcement = solveEquation2(K, P, tol);
 end
 
 % Step 5： 求解单元节点位移
