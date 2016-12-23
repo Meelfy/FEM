@@ -1,14 +1,15 @@
 function K = calWholeStiffnessMatrixSparse(coord, unit_topology_table, materials, cal_type)
-% 这个函数计算整体的劲度矩阵K
-% 因为计算方法未定，输入部分的说明自行完成
-% 输入：单元劲度阵
-% 
+% 这个函数计算稀疏矩阵方法下的整体的劲度矩阵K
+% 输入：
+%     节点坐标表
+%     单元拓扑表
+%     材料情况
+%       计算模式 cal_type
+%            单元应力问题
+%            单元应变问题
 % 输出：
 %     整体刚度矩阵 K
-%     K 为 n * n 的矩阵 的某种储存形式
-%     如果K的储存不是矩阵，请使用cell储存
-%     并给出每个cell的含义
-%     之后参数的传递以 K 为准
+
 % 节点个数
 n = max(unit_topology_table(:));
 % 初始化整体刚度矩阵
