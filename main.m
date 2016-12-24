@@ -32,27 +32,29 @@ clc;clear all;close all;
 % a为结点编号，b为1或2，分别表示x、y方向，c为位移量（未考虑弹性约束）
 % 结点坐标，输入为n行，n为结点个数，每一行为“x y”，即该行数对应结点数的坐标
 % 单元拓扑，输入为n行，n为单元个数，每一行为“i j m”，即对应的单元的结点编号
-% 外力条件，输入为n行，n为结点个数，每一行为“x y”，行数对应结点号，x为x方向上力，y为y方向上的力
+% 外力条件，输入为n行，n为结点个数，每一行为“x y”，行数对应结点号，x为x方向上力，
+% y为y方向上的力
 % 材料，输入为n行，n为单元个数，每一行为“e u”， 行数对应单元号，e为E，u为'muj'
 addpath(genpath(pwd));
 input_path = 'input/sam1.0/';
 
-bound = dlmread([input_path, 'boundaryCondition.dat']);
-coord = dlmread([input_path, 'elementCoordinates.dat']);
+bound               = dlmread([input_path, 'boundaryCondition.dat']);
+coord               = dlmread([input_path, 'elementCoordinates.dat']);
 unit_topology_table = dlmread([input_path, 'elementTopology.dat']);
-P = dlmread([input_path, 'forceCondition.dat']);
-P = P';P = P(:);
-materials = dlmread([input_path, 'materials.dat']);
+P                   = dlmread([input_path, 'forceCondition.dat']);
+P                   = P';
+P                   = P(:);
+materials           = dlmread([input_path, 'materials.dat']);
 
 % 平面应力问题cal_type=1,平面应变问题cal_type=2
 % flag = 1,表示之后用一维半带宽方法求解
 % flag = 2,表示之后用稀疏矩阵方法储存与求解
 cal_type = 1;
-flag = 2;
-tol = 1e-5;
+flag     = 2;
+tol      = 1e-5;
 
 
-%% =============== Step 2： 整体刚度矩阵集成与方程求解 =======================
+%% =============== Step 2： 整体刚度矩阵集成与方程求解 ===================
 % Branch 1: 使用一维半带宽方法求解 
 if flag == 1
     K = calWholeStiffnessMatrix(coord, unit_topology_table,...
@@ -86,12 +88,13 @@ end
 
 
 %% =============== Step 3： 求解单元节点位移 =======================
-element_displacement = elementDisplacement(whole_displcement, unit_topology_table);
+element_displacement = elementDisplacement(whole_displcement,...
+                                           unit_topology_table);
 
 
 %% =============== Step 4： 求解单元应变与单元应力 =======================
 % m代表单元总数
-m = size(unit_topology_table, 1);
+m              = size(unit_topology_table, 1);
 element_strain = zeros(3, m);
 element_stress = zeros(3, m);
 for i = 1:m
@@ -99,15 +102,16 @@ for i = 1:m
     element_X = coord(unit_topology_table(i, :)', 1);
     element_Y = coord(unit_topology_table(i, :)', 2);
     element_strain(:, i) = elementStrain(calMatrixB(element_X, element_Y),...
-                                   element_displacement,...
-                                   i);
+                                         element_displacement,...
+                                         i);
     element_stress(:, i) = elementStress(calMatrixD(materials(i,1), ...
-                                   materials(i,2), cal_type),...
-                                   element_strain,...
-                                   i);
+                                         materials(i,2), cal_type),...
+                                         element_strain,...
+                                         i);
 end
 
 
 %% =========================== Step 5： 结果输出 =======================
-dlmwrite('output/element_displacement.dat', element_displacement, 'delimiter', '\t');
+dlmwrite('output/element_displacement.dat', element_displacement,...
+         'delimiter', '\t');
 dlmwrite('output/element_stress.dat', element_stress, 'delimiter', '\t');

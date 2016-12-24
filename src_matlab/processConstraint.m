@@ -8,15 +8,15 @@ function K = processConstraint(K, bound)
 %      处理后的 K
 
 % 一维半带宽整体劲度矩阵K
-Ak = K{1}; 
+Ak  = K{1}; 
 
 %  1 * 2n，n为结点个数
 Ind = K{2}; 
 
 for i = 1 : size(bound,1);
-	element_num = bound(i, 1);
-	x_or_y = bound(i, 2);
-	j = element_num * 2 - 2 + x_or_y;
+    element_num = bound(i, 1);
+    x_or_y      = bound(i, 2);
+    j           = element_num * 2 - 2 + x_or_y;
     
 	% K(i,j) 相当于 Ak(Ind(i) - (i - j))
 	Ak(Ind(j)) = Ak(Ind(j)) * (1 / eps);

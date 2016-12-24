@@ -15,23 +15,24 @@ function K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_t
 
 %使用open_K_space（）函数计算带状矩阵K所需要的空间
     [K, K_info] = open_K_space(unit_topology_table);
-    m = size(unit_topology_table,1);
-    t = 1;
+    m           = size(unit_topology_table,1);
+    t           = 1;
     for i = 1:m
         element_X = coord(unit_topology_table(i, :)',1);
         element_Y = coord(unit_topology_table(i, :)',2);
-        matrixB = calMatrixB(element_X, element_Y);
-        matrixD = calMatrixD(materials(i,1), materials(i,2), cal_type);
-        element_k = calElementStiffnessMatrix(matrixB, matrixD, t, calAera(element_X, element_Y));
-        position = zeros(1,6);
+        matrixB   = calMatrixB(element_X, element_Y);
+        matrixD   = calMatrixD(materials(i,1), materials(i,2), cal_type);
+        element_k = calElementStiffnessMatrix(matrixB, matrixD, t,...
+                                              calAera(element_X, element_Y));
+        position  = zeros(1,6);
         for ii = 1:3
             position(ii*2-1) = unit_topology_table(i,ii)*2 - 1;
-            position(ii*2) = unit_topology_table(i,ii)*2;
+            position(ii*2)   = unit_topology_table(i,ii)*2;
         end
         for j = 1:6
             for jj = 1:6
                 if position(j) >= position(jj)
-                oned_x = K_info(position(j)) - (position(j)-position(jj));
+                oned_x    = K_info(position(j)) - (position(j)-position(jj));
                 K(oned_x) = K(oned_x) + element_k(j,jj);
                 end
             end

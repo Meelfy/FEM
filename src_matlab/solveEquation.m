@@ -8,7 +8,7 @@ function whole_displcement = solveEquation(K, P)
 % 在readme.md中有此解决方案详细说明
 
 % 一维半带宽矩阵K
-Ak = K{1}; 
+Ak  = K{1}; 
 %  1 * 2n，n为结点个数
 Ind = K{2}; 
 
@@ -16,7 +16,7 @@ Ind = K{2};
 % L 是下三角矩阵
 % 逐层计算L的值
 % L 的结构与Ak相同
-L = 0 * Ak;
+L    = 0 * Ak;
 L(1) = Ak(1);
 
 for i = 2:length(Ind)

@@ -13,7 +13,7 @@ for i = 1:n
     position = zeros(1, 6);
     for ii = 1:3
         position(ii*2 - 1) = unit_topology_table(i,ii)*2 - 1;
-        position(ii*2) = unit_topology_table(i,ii)*2;
+        position(ii*2)     = unit_topology_table(i,ii)*2;
     end
     for ii = 1:6
         element_displacement(i,ii) = whole_d(position(ii));

@@ -8,9 +8,9 @@ function P = processForceSparse(P, K, bound)
 P = sparse(P);
 
 for i = 1 : size(bound, 1)
-    elementNum = bound(i, 1);
-    XorY = bound(i, 2);
-    j = elementNum * 2 - 2 + XorY;
+    elementNum   = bound(i, 1);
+    XorY         = bound(i, 2);
+    j            = elementNum * 2 - 2 + XorY;
     displacement = bound(i, 3);
-    P(j) = K(j, j) * displacement;
+    P(j)         = K(j, j) * displacement;
 end

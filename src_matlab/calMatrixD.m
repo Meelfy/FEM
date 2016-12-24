@@ -12,10 +12,10 @@ function matrixD = calMatrixD(element_E, element_mu, cal_type)
 % 数据类型、对单元应力的规定在README.md中说明
 
 % 平面应力问题cal_type=1,平面应变问题cal_type=2
-E = element_E;
+E  = element_E;
 mu = element_mu;
 if cal_type == 2
-    E = E/(1-mu^2);
+    E  = E/(1-mu^2);
     mu = mu/(1-mu);
 end
 matrixD = E/(1-mu^2)*[1 mu 0; mu 1 0; 0 0 (1-mu)/2];

@@ -23,24 +23,24 @@ function [x, counter] = conjugate_gradient(K, P, tol)
         return;
     end
     
-    v = K * d;
+    v  = K * d;
     % 计算步长
-    w = r0' * r0 / (d' * v);
+    w  = r0' * r0 / (d' * v);
     % 更新 x
-    x = x + w * d;
+    x  = x + w * d;
     % 计算剩余的
     r1 = r0 - w * v;
     counter = counter + 1;
 
     while sqrt(r1'*r1) > tol
-        P = r1' * r1 / (r0' * r0);
+        P  = r1' * r1 / (r0' * r0);
         % 更新搜索方向
-        d = r1 + P * d;
+        d  = r1 + P * d;
         r0 = r1;
-        v = K * d;
+        v  = K * d;
         % 计算步长
-        w = r0' * r0 / (d' * v);
-        x = x + w * d;
+        w  = r0' * r0 / (d' * v);
+        x  = x + w * d;
         r1 = r0 - w * v;
         counter = counter + 1;
     end
