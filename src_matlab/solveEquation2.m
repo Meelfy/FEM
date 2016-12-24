@@ -1,11 +1,10 @@
 function whole_displcement = solveEquation2(K, P, tol)
+% 迭代法求解方程
 % 输入： 
 	% 处理后的整体刚度矩阵K，和
 	% 外力P
-	% 解决方式solving_way, 有两个值，分别为直接法：direction 和 迭代法：iteration
-
-    % 共轭梯度法对方程进行求解
-    % 默认精度
+% 共轭梯度法对方程进行求解
+% 默认精度
     if nargin == 2
         tol = 1e-5;
     end

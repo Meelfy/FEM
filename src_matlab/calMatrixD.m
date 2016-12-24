@@ -9,10 +9,8 @@ function matrixD = calMatrixD(element_E, element_mu, cal_type)
 %            单元应变问题
 % 输出为单元的D矩阵，只需适应三角形单元
 
-% 数据类型、对单元应力的规定
-% 请在README.md中说明
+% 数据类型、对单元应力的规定在README.md中说明
 
-% 请标明参考文献的出处
 % 平面应力问题cal_type=1,平面应变问题cal_type=2
 E = element_E;
 mu = element_mu;

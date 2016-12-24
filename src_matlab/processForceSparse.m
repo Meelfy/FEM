@@ -1,5 +1,6 @@
 function P = processForceSparse(P, K, bound)
 % 这个函数对P进行处理，使其满足约束
+% 用于稀疏矩阵方法
 % 输入：
 %      外力荷载P
 % 输出：

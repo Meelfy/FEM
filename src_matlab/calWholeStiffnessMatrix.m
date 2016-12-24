@@ -1,14 +1,19 @@
 function K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_type)
-% 这个函数计算整体的劲度矩阵K
-% 因为计算方法未定，输入部分的说明自行完成
-% 输入：单元劲度阵
-% 
+% 这个函数计算一维半带宽方法下的整体的劲度矩阵K
+% 输入：
+%     节点坐标表
+%     单元拓扑表
+%     材料情况
+%       计算模式 cal_type
+%            单元应力问题
+%            单元应变问题
 % 输出：
 %     整体刚度矩阵 K
-%     K 为 n * n 的矩阵 的某种储存形式
-%     如果K的储存不是矩阵，请使用cell储存
-%     并给出每个cell的含义
-%     之后参数的传递以 K 为准
+%     K 为cell
+%     K{1，1}为转化为一维带状储存的K
+%     K{1，2}为主对角元在一维矩阵中位置
+
+%使用open_K_space（）函数计算带状矩阵K所需要的空间
     [K, K_info] = open_K_space(unit_topology_table);
     m = size(unit_topology_table,1);
     t = 1;
