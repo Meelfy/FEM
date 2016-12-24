@@ -75,5 +75,5 @@ for i = 1:m
                                    element_strain,...
                                    i);
 end
-dlmwrite('output/element_displacement.dat', element_displacement, 'delimiter', '\t');
-dlmwrite('output/element_stress.dat', element_stress, 'delimiter', '\t');
+dlmwrite('output/element_displacement_big.dat', element_displacement, 'delimiter', '\t');
+dlmwrite('output/element_stress_big.dat', element_stress, 'delimiter', '\t');

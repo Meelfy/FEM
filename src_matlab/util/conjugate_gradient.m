@@ -21,16 +21,16 @@ function [x, counter] = conjugate_gradient(K, P, tol)
     % 如果成立，直接返回
     if sqrt(r0'*r0) < tol;
         return;
-    else
-        v = K * d;
-        % 计算步长
-        w = r0' * r0 / (d' * v);
-        % 更新 x
-        x = x + w * d;
-        % 计算剩余的
-        r1 = r0 - w * v;
-        counter = counter + 1;
     end
+    
+    v = K * d;
+    % 计算步长
+    w = r0' * r0 / (d' * v);
+    % 更新 x
+    x = x + w * d;
+    % 计算剩余的
+    r1 = r0 - w * v;
+    counter = counter + 1;
 
     while sqrt(r1'*r1) > tol
         P = r1' * r1 / (r0' * r0);
