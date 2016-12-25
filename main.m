@@ -34,7 +34,7 @@ clc;clear all;close all;
 % 单元拓扑，输入为n行，n为单元个数，每一行为“i j m”，即对应的单元的结点编号
 % 外力条件，输入为n行，n为结点个数，每一行为“x y”，行数对应结点号，x为x方向上力，
 % y为y方向上的力
-% 材料，输入为n行，n为单元个数，每一行为“e u”， 行数对应单元号，e为E，u为'muj'
+% 材料，输入为m行，m为单元个数，每一行为“e u”， 行数对应单元号，e为E，u为'muj'
 addpath(genpath(pwd));
 input_path = 'input/sam1.0/';
 
