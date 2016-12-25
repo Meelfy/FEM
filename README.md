@@ -44,7 +44,7 @@
     │   ├── element_stress_big.dat
     │   └── element_stress.dat
     ├── README.md
-    └── src_matlab
+    └── src
         ├── calElementStiffnessMatrix.m
         ├── calMatrixB.m
         ├── calMatrixD.m
@@ -53,16 +53,16 @@
         ├── elementDisplacement.m
         ├── elementStrain.m
         ├── elementStress.m
-        ├── open_K_speace.m
+        ├── openKspeace.m
         ├── processConstraint.m
         ├── processConstraintSparse.m
         ├── processForce.m
         ├── processForceSparse.m
         ├── solveEquation2.m
         ├── solveEquation.m
-        └── util
+        └── utils
             ├── calAera.m
-            └── conjugate_gradient.m
+            └── conjugateGradient.m
 
 ## 工作分解结构图
 
@@ -160,7 +160,7 @@ B矩阵
     
     calMatrixB.m                     / 计算 B 矩阵
     calMatrixD.m                     / 计算 D 矩阵
-    open_K_speace.m                  / 计算一维半带宽方法下的整体的劲
+    openKspeace.m                    / 计算一维半带宽方法下的整体的劲
                                      / 度矩阵K中所包含的元素个数
     calArea.m                        / 返回三角形单元的面积
     calElementStiffnessMatrix.m      / 返回单元的劲度矩阵
