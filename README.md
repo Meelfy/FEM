@@ -70,11 +70,11 @@
     <img src="https://github.com/MajorChina/FEM/blob/master/img/WBS.jpg">
 </div>
 
-## 任务安排及进度
+<!-- ## 任务安排及进度
 
 <div align="center">
     <img src="https://github.com/MajorChina/FEM/blob/master/img/甘特图.png">
-</div>
+</div> -->
 
 ## 数据流程图
 
@@ -194,7 +194,7 @@ B矩阵
 变量 下划线链接，小写
 
     element_displacement
-    whole_displcement
+    whole_displacement
 
 常量 全部大写
 
