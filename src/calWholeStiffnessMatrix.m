@@ -13,8 +13,8 @@ function K = calWholeStiffnessMatrix(coord, unit_topology_table, materials,cal_t
 %     K{1，1}为转化为一维带状储存的K
 %     K{1，2}为主对角元在一维矩阵中位置
 
-%使用open_K_space（）函数计算带状矩阵K所需要的空间
-    [K, K_info] = open_K_space(unit_topology_table);
+%使用openKspeace（）函数计算带状矩阵K所需要的空间
+    [K, K_info] = openKspeace(unit_topology_table);
     m           = size(unit_topology_table,1);
     t           = 1;
     for i = 1:m
