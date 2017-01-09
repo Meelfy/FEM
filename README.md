@@ -200,6 +200,20 @@ B矩阵
 
     E
 
+Result
+------
+
+直接法用时：   
+Elapsed time is 716.791396 seconds.  
+
+迭代法用时：   
+Elapsed time is 42.631346 seconds.  
+
+716.791396 / 42.631346  
+
+ans =  
+
+   16.8137
 
 
 License
